@@ -1,13 +1,10 @@
 import axios from "axios"
-import { useState } from "react"
 import { BsTrash3 } from "react-icons/bs"
-import { useNavigate } from "react-router-dom"
 import { URL_base } from "../../../URL"
 import { Day, Days, Habitos } from "./styles"
 
 export default function Habs({ post, setPost, token }) {
     const semana = ["D", "S", "T", "Q", "Q", "S", "S"]
-    const navigate = useNavigate()
     const config = {
         headers: {
             "Authorization": `Bearer ${token}`
@@ -24,8 +21,8 @@ export default function Habs({ post, setPost, token }) {
 
     return (
         <>{post.map((h) => (
-            <Habitos data-test="habit-container">
-                <div>
+            <Habitos data-test="habit-container" key={h.id}>
+                <div key={h.id}>
                     <h1 data-test="habit-name">{h.name}</h1>
                     <Days>{semana.map((d, i) => (
                         <Day
