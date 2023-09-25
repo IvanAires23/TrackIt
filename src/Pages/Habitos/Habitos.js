@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import Context from "../../../contexts/Context";
+import Context from "../../contexts/Context";
 import { Container, MeusHabitos } from "./styles";
 import NovoHabito from "./NovoHabito";
 import axios from "axios";
-import { URL_base } from "../../../URL";
 import Habs from "./Habs";
-import Dados from "../../../contexts/Dados";
+import Dados from "../../contexts/Dados";
 
 export default function Habitos() {
     const TopFooter = useContext(Context)
@@ -20,7 +19,7 @@ export default function Habitos() {
     }
 
     useEffect(() => {
-        axios.get(`${URL_base}/habits`, config)
+        axios.get(`${process.env.URL_BASE}/habits`, config)
             .then(res => {
                 setPost(res.data)
                 setHabitos(post)

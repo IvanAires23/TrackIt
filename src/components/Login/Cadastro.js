@@ -3,7 +3,6 @@ import logo from "../../img/logo.png"
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { URL_base } from "../../URL"
 import { Oval } from "react-loader-spinner"
 
 
@@ -16,7 +15,7 @@ export default function Cadastrar() {
 
     useEffect(() => {
         if (form.email !== "") {
-            axios.post(`${URL_base}/auth/sign-up`, info)
+            axios.post(`${process.env.URL_BASE}/auth/sign-up`, info)
                 .then(() => navigate("/"))
                 .catch(err => {
                     if (err.response.status === 409) {

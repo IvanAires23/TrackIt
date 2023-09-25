@@ -2,7 +2,6 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../../img/logo.png"
 import { ContainerLogin, InputsLogin } from "./style"
-import { URL_base } from "../../URL"
 import { useContext, useEffect, useState } from "react"
 import { Oval } from "react-loader-spinner"
 import Dados from "../../contexts/Dados"
@@ -19,7 +18,7 @@ export default function Login() {
 
     useEffect(() => {
         if (email !== "" && password !== "") {
-            axios.post(`${URL_base}/auth/login`, user)
+            axios.post(`${process.env.URL_BASE}/auth/login`, user)
                 .then((res) => {
                     navigate("/hoje")
                     dados.setUserDados(res.data)

@@ -3,8 +3,7 @@ import { Day, Days, Finish, New } from "./styles";
 import { Oval } from "react-loader-spinner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Dados from "../../../contexts/Dados";
-import { URL_base } from "../../URL";
+import Dados from "../../contexts/Dados";
 
 export default function NovoHabito({ display, setDisplay }) {
     const semana = ["D", "S", "T", "Q", "Q", "S", "S"]
@@ -25,7 +24,7 @@ export default function NovoHabito({ display, setDisplay }) {
                 name: name,
                 days: diasSelecionados
             }
-            axios.post(`${URL_base}/habits`, body, config)
+            axios.post(`${process.env.URL_BASE}/habits`, body, config)
                 .then(res => {
                     setEnviar(false)
                     setName("")

@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cadastrar from './components/Login/Cadastro';
 import Login from './components/Login/Login';
-import Hoje from './components/Pages/Hoje/Hoje';
-import Habitos from "./components/Pages/Habitos/Habitos"
-import Historico from "./components/Pages/Historico/Historico"
+import Hoje from './Pages/Hoje/Hoje';
+import Habitos from "./Pages/Habitos/Habitos"
+import Historico from "./Pages/Historico/Historico"
 import Fixos from './components/TopFooter/Fixos';
 import Context from './contexts/Context';
 import { useState } from 'react';
 import Dados from './contexts/Dados';
 
 function App() {
-  const [userDados, setUserDados] = useState("asdasd")
+  const [userDados, setUserDados] = useState()
 
   return (
     <BrowserRouter>

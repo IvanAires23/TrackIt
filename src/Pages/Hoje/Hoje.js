@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import Context from "../../../contexts/Context";
-import Dados from "../../../contexts/Dados";
+import Context from "../../contexts/Context";
+import Dados from "../../contexts/Dados";
 import { GoCheck } from "react-icons/go"
 import { BoxContainer, Check, Container, Span, TituloHabito, Topo } from "./style";
 import dayjs from "dayjs"
-import { URL_base } from "../../URL";
 
 export default function Hoje() {
     const TopFooter = useContext(Context)
@@ -26,7 +25,7 @@ export default function Hoje() {
 
 
     useEffect(() => {
-        axios.get(`${URL_base}/habits/today`, config)
+        axios.get(`${process.env.URL_BASE}/habits/today`, config)
             .then(res => {
                 setHabitos(res.data)
             })
