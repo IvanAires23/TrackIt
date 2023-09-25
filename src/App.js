@@ -8,21 +8,24 @@ import Fixos from './components/TopFooter/Fixos';
 
 import Context from './contexts/Context';
 import { useState } from 'react';
+import Dados from './contexts/Dados';
 
 function App() {
-  const [userDados, setUserDados] = useState("")
+  const [userDados, setUserDados] = useState("asdasd")
 
   return (
     <BrowserRouter>
-      <Context.Provider value={<Fixos userDados={userDados} />}>
-        <Routes>
-          <Route path="/" element={<Login setUserDados={setUserDados} />} />
-          <Route path="/cadastro" element={<Cadastrar />} />
-          <Route path="/hoje" element={<Hoje />} />
-          <Route path="/habitos" element={<Habitos userDados={userDados} />} />
-          <Route path="/historico" element={<Historico />} />
-        </Routes>
-      </Context.Provider>
+      <Dados.Provider value={{ userDados, setUserDados }}>
+        <Context.Provider value={<Fixos />}>
+          <Routes>
+            <Route path="/" element={<Login setUserDados={setUserDados} />} />
+            <Route path="/cadastro" element={<Cadastrar />} />
+            <Route path="/hoje" element={<Hoje />} />
+            <Route path="/habitos" element={<Habitos userDados={userDados} />} />
+            <Route path="/historico" element={<Historico />} />
+          </Routes>
+        </Context.Provider>
+      </Dados.Provider>
     </BrowserRouter>
   )
 
