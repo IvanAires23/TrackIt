@@ -5,7 +5,6 @@ import Hoje from './components/Pages/Hoje/Hoje';
 import Habitos from "./components/Pages/Habitos/Habitos"
 import Historico from "./components/Pages/Historico/Historico"
 import Fixos from './components/TopFooter/Fixos';
-
 import Context from './contexts/Context';
 import { useState } from 'react';
 import Dados from './contexts/Dados';

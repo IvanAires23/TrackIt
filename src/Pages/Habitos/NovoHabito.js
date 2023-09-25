@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { Day, Days, Finish, New } from "./styles";
 import { Oval } from "react-loader-spinner";
 import axios from "axios";
-import { URL_base } from "../../../URL";
 import { useNavigate } from "react-router-dom";
 import Dados from "../../../contexts/Dados";
+import { URL_base } from "../../URL";
 
 export default function NovoHabito({ display, setDisplay }) {
     const semana = ["D", "S", "T", "Q", "Q", "S", "S"]
