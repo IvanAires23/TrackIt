@@ -4,6 +4,7 @@ import { Oval } from "react-loader-spinner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Dados from "../../contexts/Dados";
+import URL_BASE from "../../URL_BASE";
 
 export default function NovoHabito({ display, setDisplay }) {
     const semana = ["D", "S", "T", "Q", "Q", "S", "S"]
@@ -24,7 +25,7 @@ export default function NovoHabito({ display, setDisplay }) {
                 name: name,
                 days: diasSelecionados
             }
-            axios.post(`${process.env.URL_BASE}/habits`, body, config)
+            axios.post(`${URL_BASE}/habits`, body, config)
                 .then(res => {
                     setEnviar(false)
                     setName("")

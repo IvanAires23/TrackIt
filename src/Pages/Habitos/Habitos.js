@@ -5,6 +5,7 @@ import NovoHabito from "./NovoHabito";
 import axios from "axios";
 import Habs from "./Habs";
 import Dados from "../../contexts/Dados";
+import URL_BASE from "../../URL_BASE";
 
 export default function Habitos() {
     const TopFooter = useContext(Context)
@@ -19,7 +20,7 @@ export default function Habitos() {
     }
 
     useEffect(() => {
-        axios.get(`${process.env.URL_BASE}/habits`, config)
+        axios.get(`${URL_BASE}/habits`, config)
             .then(res => {
                 setPost(res.data)
                 setHabitos(post)

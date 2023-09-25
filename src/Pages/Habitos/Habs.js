@@ -1,6 +1,7 @@
 import axios from "axios"
 import { BsTrash3 } from "react-icons/bs"
 import { Day, Days, Habitos } from "./styles"
+import URL_BASE from "../../URL_BASE"
 
 export default function Habs({ post, setPost, token }) {
     const semana = ["D", "S", "T", "Q", "Q", "S", "S"]
@@ -12,7 +13,7 @@ export default function Habs({ post, setPost, token }) {
 
     function confimarDelete(h) {
         if (window.confirm("Deseja realmente deletar esse habito?")) {
-            axios.delete(`${process.env.URL_BASE}/habits/${h.id}`, config)
+            axios.delete(`${URL_BASE}/habits/${h.id}`, config)
                 .then(res => setPost(post.filter(e => e.id !== h.id)))
                 .catch(err => console.log(err.response.data))
         }

@@ -5,6 +5,7 @@ import { ContainerLogin, InputsLogin } from "./style"
 import { useContext, useEffect, useState } from "react"
 import { Oval } from "react-loader-spinner"
 import Dados from "../../contexts/Dados"
+import URL_BASE from "../../URL_BASE"
 
 
 export default function Login() {
@@ -18,7 +19,7 @@ export default function Login() {
 
     useEffect(() => {
         if (email !== "" && password !== "") {
-            axios.post(`${process.env.URL_BASE}/auth/login`, user)
+            axios.post(`${URL_BASE}/auth/login`, user)
                 .then((res) => {
                     navigate("/hoje")
                     dados.setUserDados(res.data)

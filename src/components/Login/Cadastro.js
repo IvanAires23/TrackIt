@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Oval } from "react-loader-spinner"
+import URL_BASE from "../../URL_BASE"
 
 
 export default function Cadastrar() {
@@ -15,7 +16,7 @@ export default function Cadastrar() {
 
     useEffect(() => {
         if (form.email !== "") {
-            axios.post(`${process.env.URL_BASE}/auth/sign-up`, info)
+            axios.post(`${URL_BASE}/auth/sign-up`, info)
                 .then(() => navigate("/"))
                 .catch(err => {
                     if (err.response.status === 409) {
