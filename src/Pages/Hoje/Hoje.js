@@ -12,9 +12,9 @@ export default function Hoje() {
     const [count, setCount] = useState(0)
     const [percentagem, setPercentagem] = useState()
     const [reload, setReload] = useState(false)
+    const [today, setToday] = useState(dayjs().format('dddd'))
     const [day, setDay] = useState()
     const mes = dayjs().format("DD/MM")
-    const today = dayjs().format('dddd')
     const dados = useContext(Dados)
     const TopFooter = useContext(Context)
     const config = {
@@ -68,7 +68,6 @@ export default function Hoje() {
                 .catch(err => console.log(err.response.data))
         }
         setReload(false)
-
     }
     return (
         <Container>
