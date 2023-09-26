@@ -8,45 +8,35 @@ import dayjs from "dayjs"
 import URL_BASE from "../../URL_BASE";
 
 export default function Hoje() {
-    const TopFooter = useContext(Context)
     const [habitos, setHabitos] = useState([])
     const [count, setCount] = useState(0)
     const [percentagem, setPercentagem] = useState()
     const [reload, setReload] = useState(false)
-    const dados = useContext(Dados)
-    const [d, setD] = useState(dayjs().format('dddd'))
+    const [day, setDay] = useState()
     const mes = dayjs().format("DD/MM")
+    const today = dayjs().format('dddd')
+    const dados = useContext(Dados)
+    const TopFooter = useContext(Context)
     const config = {
         headers: {
             "Authorization": `Bearer ${dados.userDados.token}`
         }
     }
 
-
     useEffect(() => {
         axios.get(`${URL_BASE}/habits/today`, config)
             .then(res => {
                 setHabitos(res.data)
-                console.log(count)
             })
             .catch(err => console.log(err.response.data))
 
-        if (d === "Sunday") {
-            setD("Domingo")
-        } else if (d === "Monday") {
-            setD("Segunda")
-        } else if (d === "Tuesday") {
-            setD("Terça")
-        } else if (d === "Wednesday") {
-            setD("Quarta")
-        } else if (d === "Thursday") {
-            setD("Quinta")
-        } else if (d === "Friday") {
-            setD("Sexta")
-        } else {
-            setD("Sábado")
-        }
-
+        if (today === 'Sunday') setDay("Domingo")
+        else if (today === 'Monday') setDay("Segunda")
+        else if (today === 'Tuesday') setDay("Terça")
+        else if (today === 'Wednesday') setDay("Quarta")
+        else if (today === 'Thursday') setDay("Quinta")
+        else if (today === 'Friday') setDay("Sexta")
+        else setDay("Sábado")
     }, [reload])
 
     useEffect(() => {
@@ -83,9 +73,9 @@ export default function Hoje() {
     return (
         <Container>
             {TopFooter}
-            <Topo color={count === 0 || isNaN(count) ? "#BABABA" : "#8FC549"}>
-                <h1 data-test="today">{d + " - " + mes}</h1>
-                <h2 data-test="today-counter">{count === 0 || isNaN(count) ? "Nenhum hábito concluído ainda" : `${count.toFixed(0)}% dos hábitos concluídos`}</h2>
+            <Topo color={count === 0 || isNaN(count) || count === Infinity ? "#BABABA" : "#8FC549"}>
+                <h1 data-test="today">{day + " - " + mes}</h1>
+                <h2 data-test="today-counter">{count === 0 || isNaN(count) || count === Infinity ? "Nenhum hábito concluído ainda" : `${count.toFixed(0)}% dos hábitos concluídos`}</h2>
             </Topo>
 
             {habitos.map((h) => (
