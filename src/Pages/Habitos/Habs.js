@@ -25,7 +25,7 @@ export default function Habs({ post, setPost, token }) {
                 <div key={h.id}>
                     <h1 data-test="habit-name">{h.name}</h1>
                     <Days>{semana.map((d, i) => (
-                        <Day
+                        <Day key={i}
                             data-test="habit-day"
                             background={!h.days.includes(i) ? "#FFFFFF" : "#CFCFCF"}
                             color={!h.days.includes(i) ? "#DBDBDB" : "#FFFFFF"}
